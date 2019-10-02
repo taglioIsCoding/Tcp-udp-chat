@@ -15,6 +15,7 @@ import java.net.*;
 public class EchoClient {
     public static void main(String[] args) throws IOException {
         
+         System.out.println("SONO IL CLIENT");
         String hostName;
         int portNumber;
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
@@ -44,7 +45,7 @@ public class EchoClient {
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
                 out.println(userInput);
-                System.out.println("echo: " + in.readLine());
+                System.out.println("Server: " + in.readLine());
             }
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);

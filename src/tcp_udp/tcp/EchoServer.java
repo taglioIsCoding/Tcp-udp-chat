@@ -21,7 +21,7 @@ public class EchoServer {
             System.err.println("Usage: java EchoServer <port number>");
             System.exit(1);
         }*/
-        
+        System.out.println("SONO IL SERVER");
         int portNumber;
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
          
@@ -37,7 +37,8 @@ public class EchoServer {
             PrintWriter out =
                 new PrintWriter(clientSocket.getOutputStream(), true);                   
             BufferedReader in = new BufferedReader(
-                new InputStreamReader(clientSocket.getInputStream()));
+                //new InputStreamReader(clientSocket.getInputStream()));
+                    new InputStreamReader(System.in));
         ) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
