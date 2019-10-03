@@ -47,6 +47,7 @@ public class EchoServer {
             while ((inputLine = in.readLine()) != null) {
                 //System.out.println("Client: "+ inC.readLine());
                 out.println(inputLine);
+                System.out.println("Client: "+ inC.readLine());
             }
         } catch (IOException e) {
             System.out.println("Exception caught when trying to listen on port "

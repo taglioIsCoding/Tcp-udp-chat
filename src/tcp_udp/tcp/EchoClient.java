@@ -44,8 +44,9 @@ public class EchoClient {
         ) {
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
-                out.println(userInput);
-                System.out.println("Server: " + in.readLine());
+                //System.out.println("Server: " + in.readLine());
+            	out.println(userInput);
+            	System.out.println("Server: " + in.readLine());
             }
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);
