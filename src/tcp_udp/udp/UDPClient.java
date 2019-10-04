@@ -27,6 +27,8 @@ public class UDPClient {
 			byte[] receive = new byte[1024];
 			byte[] sendData = new byte[1024];
 			
+			while(true) {
+				
 			String data = br.readLine();
 			sendData =data.getBytes();
 			//crea un pacchetto e lo invia alla porta specificata
@@ -38,7 +40,8 @@ public class UDPClient {
 			
 			clientSocket.receive(dp1);//prende i dati
 			String data1 = new String(dp1.getData());
-			System.out.println("Client's receive:"+data1);
+			System.out.println("Client: "+data1);
+			}
 			
 		} catch (SocketException e) {
 			e.printStackTrace();

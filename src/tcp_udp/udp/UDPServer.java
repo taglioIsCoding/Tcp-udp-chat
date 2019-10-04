@@ -32,7 +32,7 @@ public class UDPServer {
 				
 				serSocket.receive(dp);//riceve i dati e li incapsula nella busta vuota
 				String data = new String(dp.getData());
-				System.out.println("Server's receive:"+data);
+				System.out.println("Server: "+data);
 				
 				//invia dati
 				InetAddress address = dp.getAddress();
