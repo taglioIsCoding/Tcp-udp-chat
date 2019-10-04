@@ -15,7 +15,7 @@ import java.net.*;
 public class EchoClient {
     public static void main(String[] args) throws IOException {
         
-         System.out.println("SONO IL CLIENT");
+         System.out.println("TCP client online");
         String hostName;
         int portNumber;
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));

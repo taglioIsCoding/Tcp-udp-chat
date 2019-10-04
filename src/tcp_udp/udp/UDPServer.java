@@ -26,6 +26,8 @@ public class UDPServer {
 			byte[] receive = new byte[1024];
 			byte[] sendData = new byte[1024];
 			
+			System.out.println("UDP server online");
+			
 			while(true){
 				//costriusce un pacchetto di dati vuoto, senza dati, pronto per riceverne
 				DatagramPacket dp = new DatagramPacket(receive, receive.length);

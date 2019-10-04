@@ -21,7 +21,7 @@ public class EchoServer {
             System.err.println("Usage: java EchoServer <port number>");
             System.exit(1);
         }*/
-        System.out.println("SONO IL SERVER");
+        System.out.println("TCP server online");
         int portNumber;
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
          

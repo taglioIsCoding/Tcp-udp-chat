@@ -27,6 +27,9 @@ public class UDPClient {
 			byte[] receive = new byte[1024];
 			byte[] sendData = new byte[1024];
 			
+			System.out.println("UDP client online");
+			
+			
 			while(true) {
 				
 			String data = br.readLine();
