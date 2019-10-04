@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tcp_udp.udp;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.*;
+/**
+ * 
+ * 
+ * 
+ *
+ */
+public class UDPClient {
+	
+	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		DatagramSocket clientSocket = null;
+		try {
+			//invia dati
+			clientSocket =new DatagramSocket();
+			InetAddress address = InetAddress.getByName("localhost");
+			byte[] receive = new byte[1024];
+			byte[] sendData = new byte[1024];
+			
+			String data = br.readLine();
+			sendData =data.getBytes();
+			//crea un pacchetto e lo invia alla porta specificata
+			DatagramPacket dp = new DatagramPacket(sendData, sendData.length,address,8899);
+			clientSocket.send(dp);
+			
+			// riceve i dati
+			DatagramPacket dp1 = new DatagramPacket(receive, receive.length);
+			
+			clientSocket.receive(dp1);//prende i dati
+			String data1 = new String(dp1.getData());
+			System.out.println("Client's receive:"+data1);
+			
+		} catch (SocketException e) {
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{clientSocket.close();}
+		
+	}
+	
+}
