@@ -37,7 +37,7 @@ public class EchoClient{
     
     private String excecute(String message) throws IOException {
         
-         System.out.println("TCP client online");
+         System.out.println("TCP client online, message: "+message);
         String ris = "";
 
         try (
@@ -51,9 +51,13 @@ public class EchoClient{
             /*String userInput;
             while ((userInput = stdIn.readLine()) != null) {*/
                 //System.out.println("Server: " + in.readLine());
-            	out.println(message);
+               
+                   out.println(message);
+                   System.out.println("Send!");
+                   
             	//System.out.println("Server: " + in.readLine());
                 ris = in.readLine();
+                echoSocket.close();
             }
          catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);

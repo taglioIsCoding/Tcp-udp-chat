@@ -188,8 +188,8 @@ public class MainUI extends javax.swing.JFrame {
     
         
         String r = "";
-        
         clientTcp  = new tcp_udp.tcp.EchoClient();
+        
         if(!jTextField1.getText().isEmpty()) r = clientTcp.sendMessage(jTextField1.getText(), jTextField3.getText());
     
         jTextField2.setText(r);
@@ -233,7 +233,8 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    private int i = 0;
     private tcp_udp.udp.UDPClient clientUdp;
     private tcp_udp.tcp.EchoClient clientTcp;
     // Variables declaration - do not modify//GEN-BEGIN:variables
