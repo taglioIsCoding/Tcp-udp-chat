@@ -12,28 +12,30 @@ package tcp_udp.tcp;
 import java.net.*;
 import java.io.*;
  
-public class EchoServer{
+public class EchoServer {
     
-     public static void main(String[] args)throws IOException {
+    public static void main(String[] args) throws IOException {
          
         /*
         if (args.length != 1) {
             System.err.println("Usage: java EchoServer <port number>");
             System.exit(1);
         }*/
-        
         System.out.println("TCP server online");
         int portNumber;
-        //BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
          
         //int portNumber = Integer.parseInt(args[0]);
         
-        //System.out.println("Insert the port number: ");
-        portNumber = 10200;
+        System.out.println("Insert the port number: ");
+        portNumber = Integer.parseInt(r.readLine());
+        
+        final String secretKey = "ssshhhhhhhhhhh!!!!";
+        Cripto AES = new Cripto();
         
         try (
             ServerSocket serverSocket =
-                new ServerSocket(portNumber);
+                new ServerSocket(/*Integer.parseInt(args[0])*/portNumber);
             Socket clientSocket = serverSocket.accept();     
             PrintWriter out =
                 new PrintWriter(clientSocket.getOutputStream(), true);   
@@ -44,7 +46,10 @@ public class EchoServer{
                 new InputStreamReader(clientSocket.getInputStream()));
         ) {
             String inputLine;
-            System.out.println("Client: "+ inC.readLine());
+            String message = inC.readLine();
+            System.out.println("Client: "+message);
+            String decriptMessage = Cripto.decrypt(message, secretKey);
+            System.out.println("Message Decrypted!  "+ decriptMessage);
             while ((inputLine = in.readLine()) != null) {
                 //System.out.println("Client: "+ inC.readLine());
                 out.println(inputLine);
