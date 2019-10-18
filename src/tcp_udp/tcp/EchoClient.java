@@ -61,7 +61,10 @@ public class EchoClient {
                 String encryptedString = AES.encrypt(userInput, secretKey) ;
                 System.out.println("Messagge Encripted! " + encryptedString);
             	out.println(encryptedString);
-            	System.out.println("Server: " + in.readLine());
+                String message =  in.readLine();
+            	System.out.println("Server: " + message);
+                String decriptMessage = Cripto.decrypt(message, secretKey);
+                System.out.println("Message Decrypted!  "+ decriptMessage);
             }
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);

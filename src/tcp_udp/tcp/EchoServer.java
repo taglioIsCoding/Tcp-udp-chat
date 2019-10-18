@@ -51,9 +51,16 @@ public class EchoServer {
             String decriptMessage = Cripto.decrypt(message, secretKey);
             System.out.println("Message Decrypted!  "+ decriptMessage);
             while ((inputLine = in.readLine()) != null) {
-                //System.out.println("Client: "+ inC.readLine());
-                out.println(inputLine);
-                System.out.println("Client: "+ inC.readLine());
+                String encryptedString = Cripto.encrypt(inputLine, secretKey) ;
+                System.out.println("Messagge Encripted! " + encryptedString);
+                out.println(encryptedString);
+                
+                //dubbbio
+                message = inC.readLine();
+                System.out.println("Client: "+message);
+                decriptMessage = Cripto.decrypt(message, secretKey);
+                System.out.println("Message Decrypted!  "+ decriptMessage);
+                
             }
         } catch (IOException e) {
             System.out.println("Exception caught when trying to listen on port "
