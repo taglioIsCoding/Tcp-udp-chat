@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
+import tcp_udp.tcp.Cripto;
 /**
  * 
  * 
@@ -28,13 +29,19 @@ public class UDPServer {
 			
 			System.out.println("UDP server online");
 			
+                        final String secretKey = "bhbbhihibuhubu";
+                        
 			while(true){
 				//costriusce un pacchetto di dati vuoto, senza dati, pronto per riceverne
 				DatagramPacket dp = new DatagramPacket(receive, receive.length);
 				
 				serSocket.receive(dp);//riceve i dati e li incapsula nella busta vuota
 				String data = new String(dp.getData());
-				System.out.println("Server: "+data);
+                                
+                                System.out.println(data);
+                                String decry = CriptoU.decrypt(data, secretKey);
+                                
+				System.out.println("Client: "+decry);
 				
 				//invia dati
 				InetAddress address = dp.getAddress();
@@ -42,7 +49,11 @@ public class UDPServer {
 				
 				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				String data1 = br.readLine();//legge i dati in console
-				sendData = data1.getBytes();
+                             
+                                String encrypt = CriptoU.encrypt(data1, secretKey);
+                                System.out.println(encrypt);
+                                sendData =encrypt.getBytes();
+				
 				
 				//Costruire una lettera DatagramPacket, che incapsula i dati da inviare, la lunghezza dei dati e le informazioni sul destinatario
 				DatagramPacket dp1 = new DatagramPacket(sendData, sendData.length,address,port);

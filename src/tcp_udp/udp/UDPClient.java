@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
+import tcp_udp.tcp.Cripto;
 /**
  * 
  * 
@@ -29,11 +30,19 @@ public class UDPClient {
 			
 			System.out.println("UDP client online");
 			
-			
+                        //criptografia
+			 final String secretKey = "bhbbhihibuhubu";
+                         
+                         
+                         
+                        
+                            
 			while(true) {
 				
 			String data = br.readLine();
-			sendData =data.getBytes();
+                        String encrypt = CriptoU.encrypt(data, secretKey);
+                        System.out.println(encrypt);
+			sendData =encrypt.getBytes();
 			//crea un pacchetto e lo invia alla porta specificata
 			DatagramPacket dp = new DatagramPacket(sendData, sendData.length,address,8899);
 			clientSocket.send(dp);
@@ -43,7 +52,10 @@ public class UDPClient {
 			
 			clientSocket.receive(dp1);//prende i dati
 			String data1 = new String(dp1.getData());
-			System.out.println("Client: "+data1);
+			System.out.println("Server: "+data1);
+                        String decry = CriptoU.decrypt(data, secretKey);
+			System.out.println(decry);
+                        
 			receive = new byte[1024];
 			}
 			
