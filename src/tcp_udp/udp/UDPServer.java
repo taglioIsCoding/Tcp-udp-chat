@@ -48,6 +48,7 @@ public class UDPServer {
 				DatagramPacket dp1 = new DatagramPacket(sendData, sendData.length,address,port);
 				serSocket.send(dp1);//Invia il messaggio di dati dp1 alla destinazione
 				dp = null;
+				receive = new byte[1024];
 			}
 			
 		} catch (SocketException e) {

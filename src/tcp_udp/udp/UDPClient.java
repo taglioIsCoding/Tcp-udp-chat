@@ -44,6 +44,7 @@ public class UDPClient {
 			clientSocket.receive(dp1);//prende i dati
 			String data1 = new String(dp1.getData());
 			System.out.println("Client: "+data1);
+			receive = new byte[1024];
 			}
 			
 		} catch (SocketException e) {
