@@ -31,7 +31,7 @@ public class UDPClient {
 			System.out.println("UDP client online");
 			
                         //criptografia
-			 final String secretKey = "bhbbhihibuhubu";
+			 final String secretKey = "ciaobello";
                          
                          
                          
@@ -41,7 +41,7 @@ public class UDPClient {
 				
 			String data = br.readLine();
                         String encrypt = CriptoU.encrypt(data, secretKey);
-                        System.out.println(encrypt);
+                        System.out.println("Messaggio criptato! "+ encrypt);
 			sendData =encrypt.getBytes();
 			//crea un pacchetto e lo invia alla porta specificata
 			DatagramPacket dp = new DatagramPacket(sendData, sendData.length,address,8899);
@@ -52,9 +52,10 @@ public class UDPClient {
 			
 			clientSocket.receive(dp1);//prende i dati
 			String data1 = new String(dp1.getData());
-			System.out.println("Server: "+data1);
-                        String decry = CriptoU.decrypt(data, secretKey);
-			System.out.println(decry);
+			byte[] b = data1.getBytes();
+			System.out.println("Messaggio in entrata: "+ data1);
+                        String decry = CriptoU.decryptU(data1, secretKey);
+			System.out.println("Server:" +decry);
                         
 			receive = new byte[1024];
 			}

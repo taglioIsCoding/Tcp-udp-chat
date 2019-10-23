@@ -29,7 +29,7 @@ public class UDPServer {
 			
 			System.out.println("UDP server online");
 			
-                        final String secretKey = "bhbbhihibuhubu";
+                        final String secretKey = "ciaobello";
                         
 			while(true){
 				//costriusce un pacchetto di dati vuoto, senza dati, pronto per riceverne
@@ -38,10 +38,10 @@ public class UDPServer {
 				serSocket.receive(dp);//riceve i dati e li incapsula nella busta vuota
 				String data = new String(dp.getData());
                                 
-                                System.out.println(data);
+                                System.out.println("Messaggio in entrata: " + data);
                                 String decry = CriptoU.decrypt(data, secretKey);
                                 
-				System.out.println("Client: "+decry);
+				System.out.println("Client: "+ decry);
 				
 				//invia dati
 				InetAddress address = dp.getAddress();
@@ -51,7 +51,7 @@ public class UDPServer {
 				String data1 = br.readLine();//legge i dati in console
                              
                                 String encrypt = CriptoU.encrypt(data1, secretKey);
-                                System.out.println(encrypt);
+                                System.out.println("Messaggio criptato! "+encrypt);
                                 sendData =encrypt.getBytes();
 				
 				
